@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import os, glob
+import subprocess
+import shutil
+import re
+import zipfile
+from pathlib import Path
+
+def extract():
+    path = os.getcwd()
+    ipth = os.path.join(path, 'input')
+    opth = os.path.join(path, 'output')
+    files = glob.glob(ipth + "/*.zip")
+    print(files)
+    for c in files:
+        with zipfile.ZipFile(c, 'r') as zipf:
+            zipf.extractall(opth)
+        os.remove(c)
+        print(c)
+
+extract()
